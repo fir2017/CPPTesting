@@ -9,6 +9,7 @@ void eatspaces(char* str);
 double expr (char* str);
 double term (char* str, int& index);
 double number(char* str, int& index);
+char* extract(char* str,int& index);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -37,9 +38,51 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
+char* extract(char* str, int& index)
+{
+	int numL = 0;
+	char* pstr = nullptr;
+	int bufindex(index);
+	do
+	{
+		switch(*(str+index))
+		{
+		case ')':
+			if (0 == numL)
+			{
+				++index;
+				pstr = new char[index-bufindex];
+				if (!pstr)
+				{
+					throw "Memory allocation failed";
+				}
+				strncpy_s(pstr,index-bufindex,str+bufindex,index-bufindex-1);
+				return pstr;
+			}
+			else
+				numL--;
+			break;
+		case '(':
+			numL++;
+			break;
+		}
+	} while (*(str+index++) != '\0');
+	throw "Ran off the edge of the cliff";
+}
+
 double number(char* str, int& index)
 {
 	auto value = 0.0;
+
+	if (*(str+index) == '(')
+	{
+		char* psubstr = nullptr;
+		psubstr = extract(str,++index);
+		value = expr(psubstr);
+		delete[] psubstr;
+		return value;
+	}
+
 	if (!isdigit(*(str+index)))
 	{
 		char message[31] = "Invalid character i number: ";
