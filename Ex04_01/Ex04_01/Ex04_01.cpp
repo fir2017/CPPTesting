@@ -5,44 +5,22 @@
 
 using namespace std;
 
-void treble(double*);
-auto pfun = treble;
-void runner (void (*blah)(double*));
+template<typename T> T max(T x[] ,const int& length)
+{
+	T maximum(x[0]);
+	for (int i = 0; i<length; i++)
+	{
+		if (maximum < x[i])
+			maximum = x[i];
+	}
+	return maximum;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	double num = 5;
-	double* ptr = nullptr;
-	ptr = &num;
 
-	cout << *ptr << endl;
+	int ints[] = {1,3,21,6,3,8,5,9,1};
 
-	treble(ptr);
-	cout << *ptr << endl;
-	double* cal = nullptr; // new double(*ptr * 20);
-	double temp = *ptr * 20;
-	cal = &temp;
-	pfun(cal);
-	cout << *cal << endl;
-	runner(pfun);
-//	return 0;
+	cout << endl << max(ints,_countof(ints)) << endl;
 }
-
-void treble(double* data)
-{
-	double* result = new double(0.0);
-	*data = 3.0 * *data;
-}
-
-void runner(void (*blah)(double*))
-{
-	cout << "Address of blah ";
-	cout << blah << endl;
-
-	double* d = new double(5.0);
-	blah(d);
-	cout << "double d " << *d << endl;
-
-}
-
 
