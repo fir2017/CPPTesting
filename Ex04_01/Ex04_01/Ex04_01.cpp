@@ -6,6 +6,8 @@
 using namespace std;
 
 void treble(double*);
+auto pfun = treble;
+void runner (void (*blah)(double*));
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -15,9 +17,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	cout << *ptr << endl;
 
-	double* retval = nullptr;
 	treble(ptr);
 	cout << *ptr << endl;
+	double* cal = nullptr; // new double(*ptr * 20);
+	double temp = *ptr * 20;
+	cal = &temp;
+	pfun(cal);
+	cout << *cal << endl;
+	runner(pfun);
 //	return 0;
 }
 
@@ -25,6 +32,17 @@ void treble(double* data)
 {
 	double* result = new double(0.0);
 	*data = 3.0 * *data;
+}
+
+void runner(void (*blah)(double*))
+{
+	cout << "Address of blah ";
+	cout << blah << endl;
+
+	double* d = new double(5.0);
+	blah(d);
+	cout << "double d " << *d << endl;
+
 }
 
 
