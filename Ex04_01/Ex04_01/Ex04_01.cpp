@@ -5,9 +5,10 @@
 
 using namespace std;
 
-template<typename T> T max(T x[] ,const int& length)
+template<typename T>
+auto max(T x[] ,const int& length) -> decltype(x[0])
 {
-	T maximum(x[0]);
+	decltype(x[0]) maximum(x[0]);
 	for (int i = 0; i<length; i++)
 	{
 		if (maximum < x[i])
