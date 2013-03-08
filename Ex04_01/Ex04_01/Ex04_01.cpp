@@ -2,39 +2,29 @@
 //
 
 #include "stdafx.h"
+
 using namespace std;
+
+int sum(int count, ...)
+{
+	if (count <= 0) return 0;
+	va_list arg_ptr;
+	va_start(arg_ptr,count);
+
+	int sum = 0;
+	for (int i = 0; i<count;i++)
+	{
+		sum += va_arg(arg_ptr,int);
+	}
+
+	va_end(arg_ptr);
+	return sum;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	const int MAX = 100;
-	long primes[MAX] = {2,3,5};
-	int count(3);
-	bool found(false);
-	long trial(5);
-
-	do {
-		trial += 2;
-		found = false;
-		for (int i = 0; i < count; i++)
-		{
-			found = (trial % *(primes + i)) == 0;
-			if (found) break;
-		}
-
-		if (!found)
-		{
-			*(primes + count++) = trial;
-		}
-	} while (count < MAX);
-
-	for (int i = 0; i < MAX; i++)
-	{
-		if (i % 5 == 0)
-			cout << endl;
-		cout << setw(4) << *(primes + i);
-	}
-	cout << endl;
-
+	cout << sum(9,6,2,3,4,5,6,3,2,4) << endl;
+	cout << sum(9,23,43,56,43,2,5,6,2,1) << endl;
 }
 
 
