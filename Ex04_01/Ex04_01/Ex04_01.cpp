@@ -5,24 +5,26 @@
 
 using namespace std;
 
-double* treble(double);
+void treble(double*);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	double num = 5;
 	double* ptr = nullptr;
+	ptr = &num;
 
-	ptr = treble(num);
-	cout << endl << "Three times num = " << 3 * num << endl;
-	cout << endl << "Result = " << *ptr << endl;
+	cout << *ptr << endl;
+
+	double* retval = nullptr;
+	treble(ptr);
+	cout << *ptr << endl;
 //	return 0;
 }
 
-double* treble(double data)
+void treble(double* data)
 {
 	double* result = new double(0.0);
-	*result = 3.0 * data;
-	return result;
+	*data = 3.0 * *data;
 }
 
 
