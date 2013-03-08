@@ -5,26 +5,24 @@
 
 using namespace std;
 
-int sum(int count, ...)
-{
-	if (count <= 0) return 0;
-	va_list arg_ptr;
-	va_start(arg_ptr,count);
-
-	int sum = 0;
-	for (int i = 0; i<count;i++)
-	{
-		sum += va_arg(arg_ptr,int);
-	}
-
-	va_end(arg_ptr);
-	return sum;
-}
+double* treble(double);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	cout << sum(9,6,2,3,4,5,6,3,2,4) << endl;
-	cout << sum(9,23,43,56,43,2,5,6,2,1) << endl;
+	double num = 5;
+	double* ptr = nullptr;
+
+	ptr = treble(num);
+	cout << endl << "Three times num = " << 3 * num << endl;
+	cout << endl << "Result = " << *ptr << endl;
+//	return 0;
+}
+
+double* treble(double data)
+{
+	double* result = new double(0.0);
+	*result = 3.0 * data;
+	return result;
 }
 
 
