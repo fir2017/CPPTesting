@@ -10,6 +10,10 @@
 #include <stdio.h>
 #include <tchar.h>
 
+#include <string>
+#include <iomanip>
+#include <iostream>
+#include <cctype>
 
 
 // TODO: reference additional headers your program requires here
