@@ -11,8 +11,8 @@ struct BOOK
 
 struct RECTANGLE
 {
-	int Left;
-	int Top;
-	int Right;
-	int Bottom;
+	int Left; // Set the top left margin
+	int Top; // Set the top margin
+	int Right; // Set the right margin
+	int Bottom; // Set the bottom margin 
 };
