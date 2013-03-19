@@ -27,6 +27,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	box.m_Width = 3.3;
 
 	cout << "Volume : " << box.Volume() << endl;
-
+	cout << "Size of box : " << sizeof(box) << endl;
 	return 0;
 }
