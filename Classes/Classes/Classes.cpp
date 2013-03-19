@@ -14,7 +14,7 @@ class CBox
 		double Volume();
 };
 
-double CBox::Volume()
+inline double CBox::Volume()
 {
 	return m_Height*m_Length*m_Width;
 };
