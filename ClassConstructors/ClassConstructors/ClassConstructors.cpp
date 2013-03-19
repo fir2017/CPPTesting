@@ -15,6 +15,13 @@ class CBox
 			m_Length = length;
 			m_Width = width;
 		}
+
+		CBox()
+		{
+			m_Height = 0;
+			m_Length = 0;
+			m_Width = 0;
+		}
 };
 
 inline double CBox::Volume()
@@ -25,7 +32,9 @@ inline double CBox::Volume()
 int _tmain(int argc, _TCHAR* argv[])
 {
 	CBox box(1.1,2.2,3.3);
+	CBox box2;
 	cout << box.Volume() << endl;
+	cout << box2.Volume() << endl;
 	return 0;
 }
 
