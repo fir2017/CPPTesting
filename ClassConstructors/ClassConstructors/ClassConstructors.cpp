@@ -21,7 +21,16 @@ class CBox
 
 	private:
 		double m_Length, m_Width, m_Height;
+
+	friend double SurfaceArea(const CBox& box);
 };
+
+double SurfaceArea(const CBox& box)
+{
+	return 2*(box.m_Height * box.m_Length +
+		box.m_Height * box.m_Width +
+		box.m_Length * box.m_Width);
+}
 
 inline double CBox::GetLength()
 {
@@ -42,6 +51,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << box.Volume() << endl;
 	cout << box2.Volume() << endl;
 	cout << box2.GetLength() << endl;
+
+	cout << SurfaceArea(box) << endl;
 	return 0;
 }
 
