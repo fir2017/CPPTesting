@@ -9,6 +9,7 @@ class CBox
 	public:
 		double Volume();
 		double GetLength();
+		bool Compare(CBox& compare);
 		explicit CBox(double length = 0.0, double width = 1.0, double height = 1) : 
 			m_Length(length), m_Width(width), m_Height(height)
 		{
@@ -23,7 +24,14 @@ class CBox
 		double m_Length, m_Width, m_Height;
 
 	friend double SurfaceArea(const CBox& box);
+	
+
 };
+
+bool CBox::Compare(CBox& compare)
+{
+	return this->Volume() > compare.Volume();
+}
 
 double SurfaceArea(const CBox& box)
 {
@@ -50,9 +58,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	cout << box.Volume() << endl;
 	cout << box2.Volume() << endl;
-	cout << box2.GetLength() << endl;
+//	cout << box2.GetLength() << endl;
 
-	cout << SurfaceArea(box) << endl;
+//	cout << SurfaceArea(box) << endl;
+	if (box.Compare(box2))
+	{
+		cout << "box1 is bigger than box2" << endl;
+	}
+	else
+	{
+		cout << "box2 is bigger than box1" << endl;
+	}
 	return 0;
 }
 
